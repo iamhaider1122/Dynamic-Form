@@ -26,7 +26,7 @@ inputField.addEventListener("click", function (event) {
   txt.setAttribute("placeholder", "Enter your name");
   div.appendChild(txt);
   console.log(div);
-  form.insertBefore(div, submitBtn);
+  form.appendChild(div);
 
   btnDisable(event);
 });
@@ -53,7 +53,7 @@ dropDownField.addEventListener("click", function (event) {
 
   div.appendChild(lbl);
   div.appendChild(selectElement);
-  form.insertBefore(div, submitBtn);
+  form.appendChild(div);
 
   btnDisable(event);
 });
@@ -66,7 +66,7 @@ emailField.addEventListener("click", function (event) {
   txt.setAttribute("placeholder", "Enter your email");
   div.appendChild(txt);
   console.log(div);
-  form.insertBefore(div, submitBtn);
+  form.appendChild(div);
   btnDisable(event);
 });
 passwordField.addEventListener("click", function (event) {
@@ -77,7 +77,7 @@ passwordField.addEventListener("click", function (event) {
   txt.setAttribute("placeholder", "Enter your password");
   div.appendChild(txt);
   console.log(div);
-  form.insertBefore(div, submitBtn);
+  form.appendChild(div);
   btnDisable(event);
 });
 
@@ -91,7 +91,7 @@ textAreaField.addEventListener("click", function (event) {
   textarea.setAttribute("cols", "30");
   div.appendChild(textarea);
   console.log(div);
-  form.insertBefore(div, submitBtn);
+  form.appendChild(div);
   btnDisable(event);
 });
 
@@ -124,7 +124,7 @@ radioField.addEventListener("click", function (event) {
   div.appendChild(lbl2);
   div.appendChild(radio2);
 
-  form.insertBefore(div, submitBtn);
+  form.appendChild(div);
 
   console.log(radio1);
 
@@ -176,7 +176,7 @@ submitBtn.addEventListener("click", function (event) {
     localStorage.setItem("formData", JSON.stringify(formArray));
   }
 
-  let html = `<button id="submit" class="btn btn-primary">Submit</button>`;
+  let html = ``;
   form.innerHTML = html;
   show();
 
