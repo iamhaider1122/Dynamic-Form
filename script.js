@@ -5,12 +5,19 @@ let textAreaField = document.getElementById("textAreaField");
 let showForms = document.getElementById("showForms");
 let form = document.querySelector("form");
 let submitBtn = document.getElementById("submit");
+submitBtn.disabled = true;
 let radioField = document.getElementById("radioField");
 let genderValue = "";
+let checkBoxfield = document.getElementById("checkBoxField");
+let dropDownField = document.getElementById("dropDownField");
+var selectElement;
 
-// let formArray = []
+function btnDisable(event) {
+  event.target.disabled = true;
+  submitBtn.disabled = false;
+}
 
-inputField.addEventListener("click", function () {
+inputField.addEventListener("click", function (event) {
   let div = document.createElement("div");
   div.classList.add("m-3");
   let txt = document.createElement("input");
@@ -19,9 +26,39 @@ inputField.addEventListener("click", function () {
   txt.setAttribute("placeholder", "Enter your name");
   div.appendChild(txt);
   console.log(div);
-  form.appendChild(div);
+  form.insertBefore(div, submitBtn);
+
+  btnDisable(event);
 });
-emailField.addEventListener("click", function () {
+
+dropDownField.addEventListener("click", function (event) {
+  let div = document.createElement("div");
+  div.classList.add("m-3");
+  const lbl = document.createElement("label");
+  lbl.setAttribute("for", "city");
+  lbl.innerText = "Selec your City";
+
+  selectElement = document.createElement("select");
+  selectElement.setAttribute("name", "city");
+  selectElement.setAttribute("id", "city");
+
+  // Create options for the select element
+  var options = ["Lahore", "Karachi", "Islmabad"];
+  options.forEach(function (optionText) {
+    var option = document.createElement("option");
+    option.setAttribute("value", optionText);
+    option.textContent = optionText;
+    selectElement.appendChild(option);
+  });
+
+  div.appendChild(lbl);
+  div.appendChild(selectElement);
+  form.insertBefore(div, submitBtn);
+
+  btnDisable(event);
+});
+
+emailField.addEventListener("click", function (event) {
   let div = document.createElement("div");
   div.classList.add("m-3");
   let txt = document.createElement("input");
@@ -29,9 +66,10 @@ emailField.addEventListener("click", function () {
   txt.setAttribute("placeholder", "Enter your email");
   div.appendChild(txt);
   console.log(div);
-  form.appendChild(div);
+  form.insertBefore(div, submitBtn);
+  btnDisable(event);
 });
-passwordField.addEventListener("click", function () {
+passwordField.addEventListener("click", function (event) {
   let div = document.createElement("div");
   div.classList.add("m-3");
   let txt = document.createElement("input");
@@ -39,10 +77,11 @@ passwordField.addEventListener("click", function () {
   txt.setAttribute("placeholder", "Enter your password");
   div.appendChild(txt);
   console.log(div);
-  form.appendChild(div);
+  form.insertBefore(div, submitBtn);
+  btnDisable(event);
 });
 
-textAreaField.addEventListener("click", function () {
+textAreaField.addEventListener("click", function (event) {
   let div = document.createElement("div");
   div.classList.add("m-3");
   let textarea = document.createElement("textarea");
@@ -52,13 +91,14 @@ textAreaField.addEventListener("click", function () {
   textarea.setAttribute("cols", "30");
   div.appendChild(textarea);
   console.log(div);
-  form.appendChild(div);
+  form.insertBefore(div, submitBtn);
+  btnDisable(event);
 });
 
-radioField.addEventListener("click", function () {
+radioField.addEventListener("click", function (event) {
   let div = document.createElement("div");
   div.classList.add("m-3");
-  div.classList.add("bg-primary");
+
   div.innerText = "Gender: ";
   let radio1 = document.createElement("input");
   radio1.setAttribute("name", "gender");
@@ -84,7 +124,7 @@ radioField.addEventListener("click", function () {
   div.appendChild(lbl2);
   div.appendChild(radio2);
 
-  form.appendChild(div);
+  form.insertBefore(div, submitBtn);
 
   console.log(radio1);
 
@@ -96,6 +136,7 @@ radioField.addEventListener("click", function () {
     genderValue = this.value;
     console.log(genderValue);
   });
+  btnDisable(event);
 });
 
 submitBtn.addEventListener("click", function (event) {
@@ -104,13 +145,25 @@ submitBtn.addEventListener("click", function (event) {
   let inputPswd = document.querySelector('input[type="password"]');
   let inputEmail = document.querySelector('input[type="email"]');
   let inputTxtArea = document.querySelector("textarea");
+  let selectedCity = getDropDownValue();
   let obj = {
     text: inputText.value,
     passwrod: inputPswd.value,
     email: inputEmail.value,
     textarea: inputTxtArea.value,
     gender: genderValue,
+    city: selectedCity,
   };
+
+  inputField.disabled = false;
+  passwordField.disabled = false;
+  emailField.disabled = false;
+  radioField.disabled = false;
+  textAreaField.disabled = false;
+  dropDownField.disabled = false;
+  submitBtn.disabled = true;
+  // Get the value of the selected option
+
   // formArray.push(obj)
   let formArray = [];
   formArray = JSON.parse(localStorage.getItem("formData"));
@@ -126,7 +179,26 @@ submitBtn.addEventListener("click", function (event) {
   let html = `<button id="submit" class="btn btn-primary">Submit</button>`;
   form.innerHTML = html;
   show();
+
+  inputField.disabled = false;
+  passwordField.disabled = false;
+  emailField.disabled = false;
+  radioField.disabled = false;
+  textAreaField.disabled = false;
+  dropDownField.disabled = false;
+  submitBtn.disabled = true;
 });
+
+function getDropDownValue() {
+  console.log(selectElement);
+
+  var selectedOption = selectElement.options[selectElement.selectedIndex];
+
+  var selectedValue = selectedOption.value;
+
+  console.log("Selected value:", selectedValue);
+  return selectedValue;
+}
 
 function show() {
   let formData = JSON.parse(localStorage.getItem("formData"));
@@ -141,6 +213,7 @@ function show() {
                     <div>password :${element.passwrod} </div>
                     <div>Message :${element.textarea} </div>
                     <div>gender :${element.gender} </div>
+                    <div>City :${element.city} </div>
                 </div>`;
     });
 
@@ -149,3 +222,4 @@ function show() {
 }
 
 show();
+//localStorage.clear();
