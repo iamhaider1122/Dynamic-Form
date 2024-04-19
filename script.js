@@ -147,13 +147,13 @@ submitBtn.addEventListener("click", function (event) {
   let inputTxtArea = document.querySelector("textarea");
   let selectedCity = getDropDownValue();
   let obj = {
-    text: inputText.value,
-    passwrod: inputPswd.value,
-    email: inputEmail.value,
-    textarea: inputTxtArea.value,
     gender: genderValue,
     city: selectedCity,
   };
+  obj.text = inputText ? inputText.value : "";
+  obj.password = inputPswd ? inputPswd.value : "";
+  obj.email = inputEmail ? inputEmail.value : "";
+  obj.textarea = inputTxtArea ? inputTxtArea.value : "";
 
   inputField.disabled = false;
   passwordField.disabled = false;
@@ -192,12 +192,14 @@ submitBtn.addEventListener("click", function (event) {
 function getDropDownValue() {
   console.log(selectElement);
 
-  var selectedOption = selectElement.options[selectElement.selectedIndex];
+  if (selectElement) {
+    var selectedOption = selectElement.options[selectElement.selectedIndex];
 
-  var selectedValue = selectedOption.value;
+    var selectedValue = selectedOption.value;
 
-  console.log("Selected value:", selectedValue);
-  return selectedValue;
+    console.log("Selected value:", selectedValue);
+    return selectedValue;
+  } else return null;
 }
 
 function show() {
