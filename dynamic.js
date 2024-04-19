@@ -2,6 +2,8 @@ let inputField = document.getElementById("inputField");
 let form = document.getElementById("myForm");
 let idArray = [];
 var selectElement;
+let submitBtn = document.getElementById("submit");
+let checkBoxName;
 let showForms = document.getElementById("showForms");
 inputField.addEventListener("click", function (event) {
   let inputType = prompt("enter input type", "text");
@@ -99,23 +101,28 @@ function textAreaField() {
 function radioBtnField() {
   let div = document.createElement("div");
   div.classList.add("m-3");
-  let name = prompt("Enter title of your radio buttons");
+  checkBoxName = prompt("Enter title of your radio buttons");
   let labels = prompt("enter comma separated values of radios buttons");
-  div.innerText = `Select ${name}: `;
+  div.innerText = `Select ${checkBoxName}: `;
   let radioId = 0;
   labels = labels.split(",");
   labels.forEach(function (element) {
     let radioInput = document.createElement("input");
     radioInput.setAttribute("type", "radio");
-    radioInput.setAttribute("name", name);
+    radioInput.setAttribute("name", checkBoxName);
     radioInput.setAttribute("id", ++radioId);
     radioInput.classList.add("ms-1");
+    radioInput.setAttribute("value", element);
     let lbl = document.createElement("label");
     lbl.setAttribute("for", radioId);
     lbl.classList.add("ms-2");
     lbl.innerText = element;
     div.appendChild(lbl);
     div.appendChild(radioInput);
+
+    radioInput.addEventListener("click", function () {
+      checkBoxName = this.value;
+    });
   });
   return div;
 }
@@ -140,7 +147,7 @@ submitBtn.addEventListener("click", function (event) {
   //   gender: genderValue,
   //   city: selectedCity,
   // };
-   
+
   let obj = {};
 
   obj.text = inputText ? inputText.value : "";
@@ -148,10 +155,8 @@ submitBtn.addEventListener("click", function (event) {
   obj.email = inputEmail ? inputEmail.value : "";
   obj.textarea = inputTxtArea ? inputTxtArea.value : "";
   obj.dropdown = selectedDropDown ? selectedDropDown : "";
-  
-  
-  
-  
+  obj.checkBoxVaule = checkBoxName ? checkBoxName : "";
+
   let formArray = [];
   formArray = JSON.parse(localStorage.getItem("formData"));
   if (formArray) {
@@ -180,11 +185,13 @@ function show() {
                       <div>email : ${element.email}</div>
                       <div>password :${element.passwrod} </div>
                       <div>Message :${element.textarea} </div>
-                      <div>gender :${element.gender} </div>
-                      <div>City :${element.city} </div>
+                      <div>gender :${element.dropdown} </div>
+                      <div>${checkBoxName} :${element.checkBoxVaule} </div>
                   </div>`;
     });
 
     showForms.innerHTML = html;
   }
 }
+
+show();
