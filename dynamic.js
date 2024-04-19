@@ -2,7 +2,7 @@ let inputField = document.getElementById("inputField");
 let form = document.getElementById("myForm");
 let idArray = [];
 var selectElement;
-
+let showForms = document.getElementById("showForms");
 inputField.addEventListener("click", function (event) {
   let inputType = prompt("enter input type", "text");
 
@@ -18,6 +18,12 @@ inputField.addEventListener("click", function (event) {
     div = dropDownField();
   } else if (inputType === "textarea") {
     div = textAreaField();
+  } else if (inputType === "radio") {
+    div = radioBtnField();
+  } else {
+    alert(
+      "enter a valid input type e.g: text,password,email,dropdown,textarea,radio"
+    );
   }
 
   form.appendChild(div);
@@ -37,15 +43,6 @@ function textInputField(inputType) {
   div.appendChild(input);
 
   return div;
-}
-
-function createLabel(id) {
-  let lbl = document.createElement("label");
-  lbl.setAttribute("for", id);
-  lblText = prompt("Enter Label of this field");
-  lbl.innerText = lblText;
-  lbl.classList.add("me-1");
-  return lbl;
 }
 
 function dropDownField() {
@@ -97,4 +94,97 @@ function textAreaField() {
   div.appendChild(textarea);
   div.classList.add("d-flex");
   return div;
+}
+
+function radioBtnField() {
+  let div = document.createElement("div");
+  div.classList.add("m-3");
+  let name = prompt("Enter title of your radio buttons");
+  let labels = prompt("enter comma separated values of radios buttons");
+  div.innerText = `Select ${name}: `;
+  let radioId = 0;
+  labels = labels.split(",");
+  labels.forEach(function (element) {
+    let radioInput = document.createElement("input");
+    radioInput.setAttribute("type", "radio");
+    radioInput.setAttribute("name", name);
+    radioInput.setAttribute("id", ++radioId);
+    radioInput.classList.add("ms-1");
+    let lbl = document.createElement("label");
+    lbl.setAttribute("for", radioId);
+    lbl.classList.add("ms-2");
+    lbl.innerText = element;
+    div.appendChild(lbl);
+    div.appendChild(radioInput);
+  });
+  return div;
+}
+
+function createLabel(id) {
+  let lbl = document.createElement("label");
+  lbl.setAttribute("for", id);
+  lblText = prompt("Enter Label of this field");
+  lbl.innerText = lblText;
+  lbl.classList.add("me-1");
+  return lbl;
+}
+
+submitBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  let inputText = document.querySelector('input[type="text"]');
+  let inputPswd = document.querySelector('input[type="password"]');
+  let inputEmail = document.querySelector('input[type="email"]');
+  let inputTxtArea = document.querySelector("textarea");
+  let selectedDropDown = getDropDownValue();
+  // let obj = {
+  //   gender: genderValue,
+  //   city: selectedCity,
+  // };
+   
+  let obj = {};
+
+  obj.text = inputText ? inputText.value : "";
+  obj.password = inputPswd ? inputPswd.value : "";
+  obj.email = inputEmail ? inputEmail.value : "";
+  obj.textarea = inputTxtArea ? inputTxtArea.value : "";
+  obj.dropdown = selectedDropDown ? selectedDropDown : "";
+  
+  
+  
+  
+  let formArray = [];
+  formArray = JSON.parse(localStorage.getItem("formData"));
+  if (formArray) {
+    formArray.push(obj);
+    localStorage.setItem("formData", JSON.stringify(formArray));
+  } else {
+    formArray = [];
+    formArray.push(obj);
+    localStorage.setItem("formData", JSON.stringify(formArray));
+  }
+
+  let html = ``;
+  form.innerHTML = html;
+  show();
+});
+
+function show() {
+  let formData = JSON.parse(localStorage.getItem("formData"));
+
+  if (formData) {
+    let html = "";
+    formData.forEach((element) => {
+      html += ` <div class="col-3  mb-2 border border-2">
+                      <h4>form data</h4>
+                      <div>Name : ${element.text}</div>
+                      <div>email : ${element.email}</div>
+                      <div>password :${element.passwrod} </div>
+                      <div>Message :${element.textarea} </div>
+                      <div>gender :${element.gender} </div>
+                      <div>City :${element.city} </div>
+                  </div>`;
+    });
+
+    showForms.innerHTML = html;
+  }
 }
