@@ -19,7 +19,7 @@ function btnDisable(event) {
 
 inputField.addEventListener("click", function (event) {
   let div = document.createElement("div");
-  div.classList.add("m-3");
+  div.classList.add("m-3"); 
   let txt = document.createElement("input");
   // txt.setAttribute('id','text')
   txt.setAttribute("type", "text");
@@ -30,198 +30,207 @@ inputField.addEventListener("click", function (event) {
 
   btnDisable(event);
 });
+ 
 
-dropDownField.addEventListener("click", function (event) {
-  let div = document.createElement("div");
-  div.classList.add("m-3");
-  const lbl = document.createElement("label");
-  lbl.setAttribute("for", "city");
-  lbl.innerText = "Selec your City";
 
-  selectElement = document.createElement("select");
-  selectElement.setAttribute("name", "city");
-  selectElement.setAttribute("id", "city");
+// dropDownField.addEventListener("click", function (event) {
+//   let div = document.createElement("div");
+//   div.classList.add("m-3");
+//   const lbl = document.createElement("label");
+//   lbl.setAttribute("for", "city");
+//   lbl.innerText = "Selec your City";
 
-  // Create options for the select element
-  var options = ["Lahore", "Karachi", "Islmabad"];
-  options.forEach(function (optionText) {
-    var option = document.createElement("option");
-    option.setAttribute("value", optionText);
-    option.textContent = optionText;
-    selectElement.appendChild(option);
-  });
+//   selectElement = document.createElement("select");
+//   selectElement.setAttribute("name", "city");
+//   selectElement.setAttribute("id", "city");
 
-  div.appendChild(lbl);
-  div.appendChild(selectElement);
-  form.appendChild(div);
+//   // Create options for the select element
+//   var options = ["Lahore", "Karachi", "Islmabad"];
+//   options.forEach(function (optionText) {
+//     var option = document.createElement("option");
+//     option.setAttribute("value", optionText);
+//     option.textContent = optionText;
+//     selectElement.appendChild(option);
+//   });
 
-  btnDisable(event);
-});
+//   div.appendChild(lbl);
+//   div.appendChild(selectElement);
+//   form.appendChild(div);
 
-emailField.addEventListener("click", function (event) {
-  let div = document.createElement("div");
-  div.classList.add("m-3");
-  let txt = document.createElement("input");
-  txt.setAttribute("type", "email");
-  txt.setAttribute("placeholder", "Enter your email");
-  div.appendChild(txt);
-  console.log(div);
-  form.appendChild(div);
-  btnDisable(event);
-});
-passwordField.addEventListener("click", function (event) {
-  let div = document.createElement("div");
-  div.classList.add("m-3");
-  let txt = document.createElement("input");
-  txt.setAttribute("type", "password");
-  txt.setAttribute("placeholder", "Enter your password");
-  div.appendChild(txt);
-  console.log(div);
-  form.appendChild(div);
-  btnDisable(event);
-});
+//   btnDisable(event);
+// });
 
-textAreaField.addEventListener("click", function (event) {
-  let div = document.createElement("div");
-  div.classList.add("m-3");
-  let textarea = document.createElement("textarea");
+// emailField.addEventListener("click", function (event) {
+//   let div = document.createElement("div");
+//   div.classList.add("m-3");
+//   let txt = document.createElement("input");
+//   txt.setAttribute("type", "email");
+//   txt.setAttribute("placeholder", "Enter your email");
+//   div.appendChild(txt);
+//   console.log(div);
+//   form.appendChild(div);
+//   btnDisable(event);
+// });
+// passwordField.addEventListener("click", function (event) {
+//   let div = document.createElement("div");
+//   div.classList.add("m-3");
+//   let txt = document.createElement("input");
+//   txt.setAttribute("type", "password");
+//   txt.setAttribute("placeholder", "Enter your password");
+//   div.appendChild(txt);
+//   console.log(div);
+//   form.appendChild(div);
+//   btnDisable(event);
+// });
 
-  textarea.setAttribute("placeholder", "Leave us a comment");
-  textarea.setAttribute("rows", "5");
-  textarea.setAttribute("cols", "30");
-  div.appendChild(textarea);
-  console.log(div);
-  form.appendChild(div);
-  btnDisable(event);
-});
+// textAreaField.addEventListener("click", function (event) {
+//   let div = document.createElement("div");
+//   div.classList.add("m-3");
+//   let textarea = document.createElement("textarea");
 
-radioField.addEventListener("click", function (event) {
-  let div = document.createElement("div");
-  div.classList.add("m-3");
+//   textarea.setAttribute("placeholder", "Leave us a comment");
+//   textarea.setAttribute("rows", "5");
+//   textarea.setAttribute("cols", "30");
+//   div.appendChild(textarea);
+//   console.log(div);
+//   form.appendChild(div);
+//   btnDisable(event);
+// });
 
-  div.innerText = "Gender: ";
-  let radio1 = document.createElement("input");
-  radio1.setAttribute("name", "gender");
-  radio1.setAttribute("type", "radio");
-  radio1.setAttribute("id", "male");
-  let lbl1 = document.createElement("label");
-  lbl1.setAttribute("for", "male");
-  lbl1.innerText = "Male ";
+// radioField.addEventListener("click", function (event) {
+//   let div = document.createElement("div");
+//   div.classList.add("m-3");
 
-  let radio2 = document.createElement("input");
-  radio2.setAttribute("name", "gender");
-  radio2.setAttribute("type", "radio");
-  radio2.setAttribute("id", "female");
-  let lbl2 = document.createElement("label");
-  lbl2.setAttribute("for", "female");
-  lbl2.innerText = "female";
+//   div.innerText = "Gender: ";
+//   let radio1 = document.createElement("input");
+//   radio1.setAttribute("name", "gender");
+//   radio1.setAttribute("type", "radio");
+//   radio1.setAttribute("id", "male");
+//   let lbl1 = document.createElement("label");
+//   lbl1.setAttribute("for", "male");
+//   lbl1.innerText = "Male ";
 
-  radio1.setAttribute("value", "male");
-  radio2.setAttribute("value", "female");
+//   let radio2 = document.createElement("input");
+//   radio2.setAttribute("name", "gender");
+//   radio2.setAttribute("type", "radio");
+//   radio2.setAttribute("id", "female");
+//   let lbl2 = document.createElement("label");
+//   lbl2.setAttribute("for", "female");
+//   lbl2.innerText = "female";
 
-  div.appendChild(lbl1);
-  div.appendChild(radio1);
-  div.appendChild(lbl2);
-  div.appendChild(radio2);
+//   radio1.setAttribute("value", "male");
+//   radio2.setAttribute("value", "female");
 
-  form.appendChild(div);
+//   div.appendChild(lbl1);
+//   div.appendChild(radio1);
+//   div.appendChild(lbl2);
+//   div.appendChild(radio2);
 
-  console.log(radio1);
+//   form.appendChild(div);
 
-  radio1.addEventListener("click", function () {
-    genderValue = this.value;
-    console.log(genderValue);
-  });
-  radio2.addEventListener("click", function () {
-    genderValue = this.value;
-    console.log(genderValue);
-  });
-  btnDisable(event);
-});
+//   console.log(radio1);
 
-submitBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  let inputText = document.querySelector('input[type="text"]');
-  let inputPswd = document.querySelector('input[type="password"]');
-  let inputEmail = document.querySelector('input[type="email"]');
-  let inputTxtArea = document.querySelector("textarea");
-  let selectedCity = getDropDownValue();
-  let obj = {
-    gender: genderValue,
-    city: selectedCity,
-  };
-  obj.text = inputText ? inputText.value : "";
-  obj.password = inputPswd ? inputPswd.value : "";
-  obj.email = inputEmail ? inputEmail.value : "";
-  obj.textarea = inputTxtArea ? inputTxtArea.value : "";
+//   radio1.addEventListener("click", function () {
+//     genderValue = this.value;
+//     console.log(genderValue);
+//   });
+//   radio2.addEventListener("click", function () {
+//     genderValue = this.value;
+//     console.log(genderValue);
+//   });
+//   btnDisable(event);
+// });
 
-  inputField.disabled = false;
-  passwordField.disabled = false;
-  emailField.disabled = false;
-  radioField.disabled = false;
-  textAreaField.disabled = false;
-  dropDownField.disabled = false;
-  submitBtn.disabled = true;
-  // Get the value of the selected option
+// submitBtn.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   let inputText = document.querySelector('input[type="text"]');
+//   let inputPswd = document.querySelector('input[type="password"]');
+//   let inputEmail = document.querySelector('input[type="email"]');
+//   let inputTxtArea = document.querySelector("textarea");
+//   let selectedCity = getDropDownValue();
+//   let obj = {
+//     gender: genderValue,
+//     city: selectedCity,
+//   };
+//   obj.text = inputText ? inputText.value : "";
+//   obj.password = inputPswd ? inputPswd.value : "";
+//   obj.email = inputEmail ? inputEmail.value : "";
+//   obj.textarea = inputTxtArea ? inputTxtArea.value : "";
 
-  // formArray.push(obj)
-  let formArray = [];
-  formArray = JSON.parse(localStorage.getItem("formData"));
-  if (formArray) {
-    formArray.push(obj);
-    localStorage.setItem("formData", JSON.stringify(formArray));
-  } else {
-    formArray = [];
-    formArray.push(obj);
-    localStorage.setItem("formData", JSON.stringify(formArray));
-  }
+//   inputField.disabled = false;
+//   passwordField.disabled = false;
+//   emailField.disabled = false;
+//   radioField.disabled = false;
+//   textAreaField.disabled = false;
+//   dropDownField.disabled = false;
+//   submitBtn.disabled = true;
+//   // Get the value of the selected option
 
-  let html = ``;
-  form.innerHTML = html;
-  show();
+//   // formArray.push(obj)
+//   let formArray = [];
+//   formArray = JSON.parse(localStorage.getItem("formData"));
+//   if (formArray) {
+//     formArray.push(obj);
+//     localStorage.setItem("formData", JSON.stringify(formArray));
+//   } else {
+//     formArray = [];
+//     formArray.push(obj);
+//     localStorage.setItem("formData", JSON.stringify(formArray));
+//   }
 
-  inputField.disabled = false;
-  passwordField.disabled = false;
-  emailField.disabled = false;
-  radioField.disabled = false;
-  textAreaField.disabled = false;
-  dropDownField.disabled = false;
-  submitBtn.disabled = true;
-});
+//   let html = ``;
+//   form.innerHTML = html;
+//   show();
 
-function getDropDownValue() {
-  console.log(selectElement);
+//   inputField.disabled = false;
+//   passwordField.disabled = false;
+//   emailField.disabled = false;
+//   radioField.disabled = false;
+//   textAreaField.disabled = false;
+//   dropDownField.disabled = false;
+//   submitBtn.disabled = true;
+// });
 
-  if (selectElement) {
-    var selectedOption = selectElement.options[selectElement.selectedIndex];
+// function getDropDownValue() {
+//   console.log(selectElement);
 
-    var selectedValue = selectedOption.value;
+//   if (selectElement) {
+//     var selectedOption = selectElement.options[selectElement.selectedIndex];
 
-    console.log("Selected value:", selectedValue);
-    return selectedValue;
-  } else return null;
-}
+//     var selectedValue = selectedOption.value;
 
-function show() {
-  let formData = JSON.parse(localStorage.getItem("formData"));
+//     console.log("Selected value:", selectedValue);
+//     return selectedValue;
+//   } else return null;
+// }
 
-  if (formData) {
-    let html = "";
-    formData.forEach((element) => {
-      html += ` <div class="col-3  mb-2 border border-2">
-                    <h4>form data</h4>
-                    <div>Name : ${element.text}</div>
-                    <div>email : ${element.email}</div>
-                    <div>password :${element.passwrod} </div>
-                    <div>Message :${element.textarea} </div>
-                    <div>gender :${element.gender} </div>
-                    <div>City :${element.city} </div>
-                </div>`;
-    });
+// function show() {
+//   let formData = JSON.parse(localStorage.getItem("formData"));
 
-    showForms.innerHTML = html;
-  }
-}
+//   if (formData) {
+//     let html = "";
+//     formData.forEach((element) => {
+//       html += ` <div class="col-3  mb-2 border border-2">
+//                     <h4>form data</h4>
+//                     <div>Name : ${element.text}</div>
+//                     <div>email : ${element.email}</div>
+//                     <div>password :${element.passwrod} </div>
+//                     <div>Message :${element.textarea} </div>
+//                     <div>gender :${element.gender} </div>
+//                     <div>City :${element.city} </div>
+//                 </div>`;
+//     });
 
-show();
-//localStorage.clear();
+//     showForms.innerHTML = html;
+//   }
+// }
+
+// show();
+// let person = prompt("Please enter your name", "Harry Potter");
+// let text;
+// if (person == null || person == "") {
+//   text = "User cancelled the prompt.";
+// } else {
+//   text = "Hello " + person + "! How are you today?";
+// }
+// console.log(text);
