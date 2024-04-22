@@ -158,7 +158,7 @@ submitBtn.addEventListener("click", function (event) {
   obj.dropdown = selectedDropDown ? selectedDropDown : "";
   obj.checkBoxVaule = checkBoxName ? checkBoxName : "";
 
-  let formArray = JSON.parse(localStorage.getItem("formData")) || [];
+  let formArray = [];
   formArray.push(obj);
   localStorage.setItem("formData", JSON.stringify(formArray));
 
@@ -173,7 +173,7 @@ function show() {
   if (formData) {
     let html = "";
     formData.forEach((element) => {
-      html += ` <div class="offset-1 col-lg-3 card col-5 mb-2 border border-2">
+      html += ` <div class=" col-lg-3 card col-5 mb-2 border border-2">
                       <h4 class="text-center">form data</h4>
                       <div><span class="h6">Name</span> : ${element.text}</div>
                       <div><span class="h6">Email</span>  : ${element.email}</div>
@@ -187,3 +187,4 @@ function show() {
     showForms.innerHTML = html;
   }
 }
+localStorage.clear();
