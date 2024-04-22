@@ -3,6 +3,7 @@ let form = document.getElementById("myForm");
 let idArray = [];
 var selectElement;
 let submitBtn = document.getElementById("submit");
+var fieldId = 0;
 let checkBoxName;
 let showForms = document.getElementById("showForms");
 inputField.addEventListener("click", function (event) {
@@ -36,7 +37,7 @@ function textInputField(inputType) {
   div.classList.add("m-3");
   let input = document.createElement("input");
   input.setAttribute("type", inputType);
-  let inputId = prompt("Enter a valid id for input", "myInput");
+  let inputId = `field${fieldId++}`;
   input.setAttribute("id", inputId);
 
   let lbl = createLabel(inputId);
@@ -51,7 +52,7 @@ function dropDownField() {
   let div = document.createElement("div");
   div.classList.add("m-3");
   selectElement = document.createElement("select");
-  let inputId = prompt("Enter id of dropDown");
+  let inputId = `field${fieldId++}`;
   selectElement.setAttribute("id", inputId);
 
   let lbl = createLabel(inputId);
@@ -87,7 +88,7 @@ function textAreaField() {
   let div = document.createElement("div");
   div.classList.add("m-3");
   let textarea = document.createElement("textarea");
-  let inputId = prompt("Enter id of dropDown");
+  let inputId = `field${fieldId++}`;
   textarea.setAttribute("id", inputId);
   let lbl = createLabel(inputId);
   textarea.setAttribute("rows", 5);
@@ -157,16 +158,9 @@ submitBtn.addEventListener("click", function (event) {
   obj.dropdown = selectedDropDown ? selectedDropDown : "";
   obj.checkBoxVaule = checkBoxName ? checkBoxName : "";
 
-  let formArray = [];
-  formArray = JSON.parse(localStorage.getItem("formData"));
-  if (formArray) {
-    formArray.push(obj);
-    localStorage.setItem("formData", JSON.stringify(formArray));
-  } else {
-    formArray = [];
-    formArray.push(obj);
-    localStorage.setItem("formData", JSON.stringify(formArray));
-  }
+  let formArray = JSON.parse(localStorage.getItem("formData")) || [];
+  formArray.push(obj);
+  localStorage.setItem("formData", JSON.stringify(formArray));
 
   let html = ``;
   form.innerHTML = html;
@@ -179,13 +173,13 @@ function show() {
   if (formData) {
     let html = "";
     formData.forEach((element) => {
-      html += ` <div class="col-3  mb-2 border border-2">
+      html += ` <div class="offset-1 col-lg-3 col-5 mb-2 border border-2">
                       <h4>form data</h4>
                       <div>Name : ${element.text}</div>
                       <div>email : ${element.email}</div>
                       <div>password :${element.passwrod} </div>
                       <div>Message :${element.textarea} </div>
-                      <div>gender :${element.dropdown} </div>
+                      <div>country :${element.dropdown} </div>
                       <div>${checkBoxName} :${element.checkBoxVaule} </div>
                   </div>`;
     });
