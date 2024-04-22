@@ -163,7 +163,7 @@ submitBtn.addEventListener("click", function (event) {
   localStorage.setItem("formsData", JSON.stringify(formArray));
 
   let html = ``;
-  s;
+  
   form.innerHTML = html;
   show();
 });
