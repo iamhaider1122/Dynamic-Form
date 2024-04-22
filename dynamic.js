@@ -160,15 +160,16 @@ submitBtn.addEventListener("click", function (event) {
 
   let formArray = [];
   formArray.push(obj);
-  localStorage.setItem("formData", JSON.stringify(formArray));
+  localStorage.setItem("formsData", JSON.stringify(formArray));
 
   let html = ``;
+  s;
   form.innerHTML = html;
   show();
 });
 
 function show() {
-  let formData = JSON.parse(localStorage.getItem("formData"));
+  let formData = JSON.parse(localStorage.getItem("formsData"));
 
   if (formData) {
     let html = "";
