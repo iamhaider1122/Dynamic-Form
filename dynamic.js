@@ -175,12 +175,12 @@ function show() {
     formData.forEach((element) => {
       html += ` <div class="offset-1 col-lg-3 card col-5 mb-2 border border-2">
                       <h4 class="text-center">form data</h4>
-                      <div><span class="h2">Name</span> : ${element.text}</div>
-                      <div><span class="h2">Email</span>  : ${element.email}</div>
-                      <div><span class="h2">Password</span>  :${element.passwrod} </div>
-                      <div><span class="h2">Message</span>  :${element.textarea} </div>
-                      <div><span class="h2">Country</span>  :${element.dropdown} </div>
-                      <div><span class="h2">${checkBoxName}</span>  :${element.checkBoxVaule} </div>
+                      <div><span class="h6">Name</span> : ${element.text}</div>
+                      <div><span class="h6">Email</span>  : ${element.email}</div>
+                      <div><span class="h6">Password</span>  :${element.passwrod} </div>
+                      <div><span class="h6">Message</span>  :${element.textarea} </div>
+                      <div><span class="h6">Country</span>  :${element.dropdown} </div>
+                      <div><span class="h6">${checkBoxName}</span>  :${element.checkBoxVaule} </div>
                   </div>`;
     });
 
